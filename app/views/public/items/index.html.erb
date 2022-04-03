@@ -1,0 +1,24 @@
+<div class="container">
+  <h4>商品一覧</h4>
+  
+  
+    <div class="row">
+      <% @items.each do |item| %>
+      
+      <div class="col-lg-3 col-md-6 mb-4">
+        
+        <%= attachment_image_tag item, :image, format: 'jpeg', size:"170x120" %><br>
+        
+          
+            
+            
+          <font size="2"><%=item.name %></font><br>
+          <font size="2">¥<%=item.price %></font><br>
+  
+      </div>
+      <% end %>
+  
+    </div>
+    
+  </div>
+  
