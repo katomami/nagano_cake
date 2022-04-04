@@ -1,8 +1,14 @@
 class Public::ItemsController < ApplicationController
   def index
-     @items=Item.all
+      @items=Item.page(params[:page]).per(8)
   end
 
   def show
+　　@item=Item.find(params[:id])
+    @cart_item=CartItem.new(cart_item_params)
+  
+  
+     @cart_item.save 
+    redirect_to cart_item_path(@cart_item.id)
   end
 end
