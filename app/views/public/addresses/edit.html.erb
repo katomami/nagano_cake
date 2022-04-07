@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="row">
+    <div class="col-2 mt-1"></div>
+    <div class-"col-10 mt-1">
+      <h4>配送先編集</h4>
+    </div>
+  </div>
+  <%= form_with model:@address,url:update_addresses_path(@address), local:true do |f| %>
+  <div class="row">
+    <div class="col-1"></div>
+    <div class="col-3 mt-3">
+      <%= f.label :image,'郵便番号(ハイフンなし)' %>
+    </div>
+    <div class="col-8 mt-3">
+      <%= f.text_field:postal_code %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-1"></div>
+    <div class="col-3 mt-1">
+      <%= f.label :image,'住所' %>
+    </div>
+    <div class="col-8 mt-1">
+      <%= f.text_field:address, :size=>"50" %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-1"></div>
+    <div class="col-3 mt-1">
+      <%= f.label :image,'宛名' %>
+    </div>
+    <div class="col-5 mt-1">
+      <%= f.text_field:name %>
+    </div>
+    <div class-"col-3 mt-1">
+      <%= f.submit"変更内容を保存",class:'btn btn-success' %>
+    <% end %>
+    </div>
+  </div>
+      
+</div>

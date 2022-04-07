@@ -1,0 +1,71 @@
+<div class="container">
+  <div class="row">
+    <div class="col-2 mt-1"></div>
+    <div class-"col-10 mt-1">
+      <h4>配送先登録/一覧</h4>
+    </div>
+  </div>
+  <%= form_with model:@address,url:addresses_path, local:true do |f| %>
+  <div class="row">
+    <div class="col-1 mt-3"></div>
+    <div class="col-3 mt-3">
+      <%= f.label :image,'郵便番号(ハイフンなし)' %>
+    </div>
+    <div class="col-8 mt-3">
+      <%= f.text_field:postal_code %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-1"></div>
+    <div class="col-3 mt-1">
+      <%= f.label :image,'住所' %>
+    </div>
+    <div class="col-8 mt-1">
+      <%= f.text_field:address, :size=>"60" %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-1"></div>
+    <div class="col-3 mt-1">
+      <%= f.label :image,'宛名' %>
+    </div>
+    <div class="col-5 mt-1">
+      <%= f.text_field:name %>
+    </div>
+    <div class-"col-4 mt-1">
+      <%= f.submit"新規登録",class:'btn btn-success' %>
+    <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-1"></div>
+    <div class="col-11 mt-5">
+    
+  
+  <table border="1" width="70%" cellpadding="10">
+    <thead>
+      <th>郵便番号</th>
+      <th>住所</th>
+      <th>宛名</th>
+      <th></th>
+    </thead>
+    <tbody>
+      <% @addresses.each do |address| %>
+
+    
+      
+      
+    <tr>
+      <td><%=address.postal_code %></td>
+      <td><%=address.address %></td>
+      <td><%=address.name %></td>
+      <td><%= link_to"編集する",edit_addresses_path(address),class:"btn btn-sm btn-success" %>
+          <%= link_to"削除する",destroy_addresses_path(address), method: :delete,class:"btn btn-sm btn-danger" %></td>
+    </tr>
+      <% end %>
+    </tbody> 
+  </table>
+    
+    </div>  
+  </div>
+</div>

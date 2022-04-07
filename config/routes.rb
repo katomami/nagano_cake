@@ -30,8 +30,11 @@ Rails.application.routes.draw do
   post 'orders', to:'public/orders#create'
   get 'orders', to:'public/orders#index'
   get 'orders/:id', to:'public/orders#show'
-  
-
+  get 'addresses', to:'public/addresses#index'
+  get 'addresses/:id/edit', to:'public/addresses#edit', as: 'edit_addresses'
+  post 'addresses', to:'public/addresses#create'
+  patch 'addresses/:id', to:'public/addresses#update', as: 'update_addresses'
+  delete 'addresses/:id', to:'public/addresses#destroy', as: 'destroy_addresses'
 
   namespace :admin do
     resources :items
