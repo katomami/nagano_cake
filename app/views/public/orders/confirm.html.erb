@@ -42,7 +42,7 @@
           <td>合計金額</td><td><%= @合計金額 %></td>
         </tr>
         <tr>
-          <td>請求金額</td><td><%= (@合計金額+800) %></td>
+          <td>請求金額</td><td><%= (@合計金額+=800) %></td>
         </tr>
       </table>
     </div>
@@ -56,7 +56,7 @@
       <span style="margin-right: 20px;"></span><%= @order.payment_method_i18n %><br>
       <font size="4">お届け先<span style="margin-right: 20px;"></span>〒<%= @order.postal_code %><%= @order.address %><br>
       <span style="margin-right: 100px;"></span><%= @order.name %></font>
-      
+
     </div>
   </div>
   <div class="row">
@@ -66,8 +66,8 @@
       <%= f.hidden_field :postal_code %>
       <%= f.hidden_field :name %>
       <%= f.hidden_field :address %>
-      <%= f.hidden_field :shipping_cost %>
-      <%= f.hidden_field :total_payment %>
+      <%= f.hidden_field :shipping_cost, value: 800 %>
+      <%= f.hidden_field :total_payment, value: @合計金額 %>
       <%= f.submit"注文を確定する",class:'btn btn-success' %>
     </div>
     <% end %>

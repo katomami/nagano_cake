@@ -19,7 +19,7 @@ module NaganoCake
    config.i18n.default_locale = :ja
    config.i18n.available_locales = [:ja, :en]
 
-    config.time_zone = 'Tokyo'
+    config.time_zone = 'Asia/Tokyo'
 
   end
 end
