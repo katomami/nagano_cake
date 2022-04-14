@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
-
-  devise_for :customers,skip: [:passwords], controllers: {
+  get 'customers/edit', to:'public/customers#edit'
+  patch 'customers', to:'public/customers#update', as: 'customers_update'
+  devise_for :customers, skip: [:passwords,], controllers: {
     registrations: "public/registrations",
     sessions: "public/sessions"
     }
@@ -17,8 +18,8 @@ Rails.application.routes.draw do
   get 'items/:id', to:'public/items#show', as: 'item'
 
   get 'customers', to:'public/customers#show'
-  get 'customers/edit', to:'public/customers#edit'
-  patch 'customers', to:'public/customers#update'
+  
+  
   get 'customers/unsubscribe', to:'public/customers#unsubscribe'
   patch 'customers/withdrawal', to:'public/customers#withdrawal'
 
