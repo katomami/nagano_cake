@@ -4,17 +4,17 @@
     <div class="col-4 mt-5">
      <%= attachment_image_tag @item, :image, format: 'jpeg', size:"300x200" %>
     </div>
-    
+
     <div class="col-1"></div>
     <div class="col-5 mt-5">
-    
+
     <table>
         <tr>
           <td><font size="6"><%=@item.name %></font></td>
         </tr>
         <tr>
           <td><font size="5"><%=@item.introduction %></font></td>
-        </tr>  
+        </tr>
         <tr>
           <td><font size="5">¥<% included = @item.price*1.1 %><%= included.round %>(税込)</font></td>
         </tr>
@@ -24,9 +24,9 @@
   <div class="row">
     <div class="col-7"></div>
     <div class="col-5">
-      <%= form_with model:@cart_item,url:cart_items_path, method: :post, local:true do |f| %>  
+      <%= form_with model:@cart_item,url:cart_items_path, method: :post, local:true do |f| %>
       <%= f.select :amount, *[1..10], {include_blank:'個数選択'} %>
-      <%= f.hidden_field :customer_id, value: current_customer.id %>
+      <%= f.hidden_field :customer_id, value: current_customer %>
       <%= f.hidden_field :item_id, value: @item.id %>
       <span style="margin-right: 32px;"></span><%= f.submit"カートに入れる", class:"btn btn-sm btn-success" %>
     <% end %>
