@@ -4,3 +4,13 @@ ja:
       payment_method:
         credit_card: 'クレジットカード'
         transfer: '銀行振込'
+  errors:
+    messages:
+      not_saved: '保存できませんでした'
+  activerecord:
+    errors:
+      models:
+        customer:
+          attributes:
+            email:
+              taken: 'このアドレスは使用できません'

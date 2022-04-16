@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
-  get 'customers/edit', to:'public/customers#edit'
-  patch 'customers', to:'public/customers#update', as: 'customers_update'
+
   devise_for :customers, skip: [:passwords,], controllers: {
     registrations: "public/registrations",
     sessions: "public/sessions"
@@ -16,10 +15,7 @@ Rails.application.routes.draw do
   delete 'cart_items', to:'public/cart_items#destroy_all', as: 'destroy_all_cart_item'
   get 'items', to:'public/items#index'
   get 'items/:id', to:'public/items#show', as: 'item'
-
-  get 'customers', to:'public/customers#show'
-  
-  
+  get 'customers/my_page', to:'public/customers#show'
   get 'customers/unsubscribe', to:'public/customers#unsubscribe'
   patch 'customers/withdrawal', to:'public/customers#withdrawal'
 
@@ -36,10 +32,14 @@ Rails.application.routes.draw do
   post 'addresses', to:'public/addresses#create'
   patch 'addresses/:id', to:'public/addresses#update', as: 'update_addresses'
   delete 'addresses/:id', to:'public/addresses#destroy', as: 'destroy_addresses'
+  get 'customers/edit_mypage', to:'public/customers#edit', as:'customers_edit_mypage'
+  patch 'customers/update_mypage', to:'public/customers#update', as: 'customers_update_mypage'
 
   namespace :admin do
     resources :items
     resources :genres
   end
+  namespace :public do
 
+  end
 end
