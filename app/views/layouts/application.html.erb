@@ -4,18 +4,23 @@
     <title>NaganoCake</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+　　<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
+    <% if customer_signed_in? %>
+     <%= link_to "ログアウト", destroy_customer_session_path,method: :delete %>
+     
+    <% elsif admin_signed_in? %>
+     <%= link_to "ログアウト", destroy_admin_session_path,method: :delete %>
+    <% end %> 
+     
     <% flash.each do |key, value| %>
           <%= content_tag(:div, value, class: "#{key}") %>
      <% end %>
-     <% if customer_signed_in? %>
-     <%= link_to "ログアウト", destroy_customer_session_path,method: :delete %>
-     <% end %>
+     
     <%= yield %>
 
 

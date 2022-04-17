@@ -34,7 +34,8 @@ Rails.application.routes.draw do
   delete 'addresses/:id', to:'public/addresses#destroy', as: 'destroy_addresses'
   get 'customers/edit_mypage', to:'public/customers#edit', as:'customers_edit_mypage'
   patch 'customers/update_mypage', to:'public/customers#update', as: 'customers_update_mypage'
-
+  get '/admin',to:'admin/homes#top'
+  
   namespace :admin do
     resources :items
     resources :genres

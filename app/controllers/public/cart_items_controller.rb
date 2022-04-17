@@ -7,8 +7,12 @@ class Public::CartItemsController < ApplicationController
       @cart_item=CartItem.new(cart_item_params)
       @cart_item.customer_id=current_customer.id
 
-      @cart_item = current_customer.cart_items.find_by(item_id: params[:cart_item][:item_id])
-      @cart_item.amount += params[:cart_item][:amount].to_i
+      @cart = current_customer.cart_items.find_by(item_id: params[:cart_item][:item_id])
+      if @cart
+      @cart.amount += params[:cart_item][:amount].to_i
+      @cart.update_attribute(:amount, @cart.amount)
+      @cart_item.delete
+     end
       @cart_item.save
       redirect_to cart_item_path
 
