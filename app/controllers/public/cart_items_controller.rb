@@ -12,7 +12,7 @@ class Public::CartItemsController < ApplicationController
       @cart.amount += params[:cart_item][:amount].to_i
       @cart.update_attribute(:amount, @cart.amount)
       @cart_item.delete
-     end
+      end
       @cart_item.save
       redirect_to cart_item_path
 

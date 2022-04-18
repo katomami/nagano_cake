@@ -4,6 +4,12 @@ ja:
       payment_method:
         credit_card: 'クレジットカード'
         transfer: '銀行振込'
+      status:
+        not_payment: '入金待ち'
+        payment_confirmation: '入金確認'
+        under_construction: '製作中'
+        ready_to_ship: '発送準備中'
+        shipped: '発送済み'
   errors:
     messages:
       not_saved: '保存できませんでした'

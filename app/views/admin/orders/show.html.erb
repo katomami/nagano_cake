@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="row">
+    <div class="col-1"></div>
+    <div class="col-2 mt-1">
+      <div class="test1">注文履歴詳細</div>
+    </div>
+    <div class="col-9"></div>
+  </div>
+
+  <div class="row">
+    <div class="col-1"></div>
+    <div class="col-10">
+      <table>
+        <tr>
+          <td>購入者</td><td><%= @order.customer.last_name %><%= @order.customer.first_name %></td>
+        </tr>
+        <tr>
+          <td>注文日</td><td><%= @order.created_at.strftime('%Y/%m/%d') %></td>
+        </tr>
+        <tr>
+          <td>配送先</td><td><%= @order.address %><br><%= @order.name %></td>
+        </tr>
+        <tr>
+          <td>支払方法</td><td><%= @order.payment_method_i18n %></td>
+        </tr>
+        <tr>
+          <td>注文ステータス</td>
+          <%= form_with(model:@order,url:admin_order_path, method: :patch, local: true, class:"form-row") do |f| %>
+          <td><%= f.select :status, Order.statuses_i18n.invert, {prompt: false}, class:"form-control form-control-sm col-6" %>
+          <%= f.submit"更新", class:"btn btn-sm btn-success" %></td>
+          <% end %>
+        </tr>
+      </table>
+    </div>
+    <div class="col-1"></div>
+  </div>
+</div>
