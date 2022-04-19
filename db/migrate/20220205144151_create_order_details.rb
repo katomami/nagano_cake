@@ -7,7 +7,7 @@ class CreateOrderDetails < ActiveRecord::Migration[5.2]
       t.integer :amount
       t.datetime :created_at
       t.datetime :updated_at
-      t.integer :making_status
+      t.integer :making_status, null: false, default: 0
 
       t.timestamps
     end

@@ -40,7 +40,7 @@ class Public::OrdersController < ApplicationController
     if params[:order][:select_address]=="0"
       @order.address=current_customer.address
       @order.postal_code=current_customer.postal_code
-      @order.name=current_customer.first_name+current_customer.last_name
+      @order.name=current_customer.last_name+current_customer.first_name
 
     elsif params[:order][:select_address]=="1"
       @address=Address.find(params[:order][:address_id])

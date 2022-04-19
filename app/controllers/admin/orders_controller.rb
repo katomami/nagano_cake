@@ -9,6 +9,6 @@ class Admin::OrdersController < ApplicationController
   end
   private
   def order_params
-    params.require(:order).permit(:customer_id)
+    params.require(:order).permit(:customer_id, :status)
   end
 end

@@ -25,13 +25,60 @@
         </tr>
         <tr>
           <td>注文ステータス</td>
-          <%= form_with(model:@order,url:admin_order_path, method: :patch, local: true, class:"form-row") do |f| %>
-          <td><%= f.select :status, Order.statuses_i18n.invert, {prompt: false}, class:"form-control form-control-sm col-6" %>
+          <%= form_with model:@order,url:admin_order_path, method: :patch, local:true do |f| %>
+          <td><%= f.select :status, Order.statuses_i18n.invert %>
           <%= f.submit"更新", class:"btn btn-sm btn-success" %></td>
           <% end %>
         </tr>
       </table>
     </div>
     <div class="col-1"></div>
+  </div>
+  <div class="row">
+    <div class="col-1"></div>
+    <div class="col-7 mt-1">
+      <table class="table">
+      <thead class="table-light">
+        <th>商品名</th>
+        <th>単価(税込)</th>
+        <th>数量</th>
+        <th>小計</th>
+        <th>製作ステータス</th>
+
+      </thead>
+      <tbody>
+        <% @order.order_details.each do |good| %>
+
+        <tr>
+          <td><%= good.item.name %></td>
+          <td><%= good.price %></td>
+          <td><%= good.amount %></td>
+          <td><%= (good.price*good.amount) %></td>
+          <%= form_with model:good,url:order_details_update_path, method: :patch, local:true do |f| %>
+          <td><%= f.select :making_status, OrderDetail.making_statuses_i18n.invert %>
+          <%= f.submit"更新", class:"btn btn-sm btn-success" %></td>
+          <% end %>
+
+        <% end %>
+        </tr>
+      </tbody>
+      </table>
+    </div>
+    <div class="col-1"></div>
+    <div class="col-3 mt-auto">
+      
+      <table>
+        <tr>
+          <td>商品合計</td><td><%= (@order.total_payment-800) %></td>
+        </tr>
+        <tr>
+          <td>送料</td><td><%= @order.shipping_cost %></td>
+        </tr>
+        <tr>
+          <td>請求金額合計</td><td><%= @order.total_payment %></td>
+        </tr>
+      </table>
+      
+    </div>
   </div>
 </div>
