@@ -1,16 +1,15 @@
 <div class="container">
   <div class="row">
-  <div class="col-1"></div>
-  <div class="col-10">
+    <div class="col-1"></div>
+    <div class="col-10">
   <h4>商品一覧</h4>
+    </div>
+    <div class="col-1">
+      <a href="/admin/items/new"class="btn btn-white rounded-circle p-0 shadow-sm text-secondary"style="width:2rem;height:2rem;"role="button">＋</a>
+
+    </div>
   </div>
-  <div class="col-1">
-    <%= link_to new_admin_item_path, class:'btn btn-default' do %>
-    <i class="fa fa-plus-circle size"></i>
-    <% end %>
-  </div>
-  </div>
-      
+
       <table class="table">
         <thead>
           <tr>
@@ -25,8 +24,8 @@
         <tbody>
           <tr>
             <td scope="row"><%= item.id %></td>
-          
-            
+
+
             <td><%= link_to item.name, admin_item_path(item.id) %></td>
             <td><%= item.price %></td>
             <td><%= item.genre.name %></td>
@@ -37,12 +36,12 @@
               <p>販売停止中</p>
               <% end %>
             </td>
-        
-            
+
+
           </tr>
         </tbody>
         <% end %>
-          
+
       </table>
       <%= paginate @items %>
 </div>

@@ -1,0 +1,59 @@
+<div class="container">
+  <div class="row">
+    <div class="col-1"></div>
+    <div class="col-3 mt-1">
+      <div class="test"><%= @customer.last_name %><%= @customer.first_name %>さんの会員詳細</div>
+    </div>
+    <div class="col-8"></div>
+  </div>
+  <div class="row">
+    <div class="col-1"></div>
+    <div class="col-8 mt-3">
+  <table cellpadding="5px">
+    <tr>
+      <td>会員ID</td><td><span style="margin-right: 80px;"></span><%= @customer.id %></td>
+    </tr>
+    <tr>
+      <td>氏名</td><td><span style="margin-right: 80px;"></span><%= @customer.last_name %><span style="margin-right: 10px;"></span><%= @customer.first_name %></td>
+    </tr>
+    <tr>
+      <td>フリガナ</td><td><span style="margin-right: 80px;"></span><%= @customer.last_name_kana%><span style="margin-right: 10px;"></span><%= @customer.first_name_kana %></td>
+    </tr>
+    <tr>
+      <td>郵便番号</td><td><span style="margin-right: 80px;"></span><%= @customer.postal_code %></td>
+    </tr>
+    <tr>
+      <td>住所</td><td><span style="margin-right: 80px;"></span><%= @customer.address %></td>
+    </tr>
+    <tr>
+      <td>電話番号</td><td><span style="margin-right: 80px;"></span><%= @customer.telephone_number %></td>
+    </tr>
+    <tr>
+      <td>メールアドレス</td><td><span style="margin-right: 80px;"></span><%= @customer.email %></td>
+    </tr>
+    <tr>
+      <td>会員ステータス</td>
+      
+      <% if @customer.is_active == true %>
+      <td><div class="test3"><span style="margin-right: 80px;"></span>有効</div></td>
+      <% else %>
+      <td><div class="test3"><span style="margin-right: 80px;"></span>退会</div></td>
+      <% end %>
+      
+    </tr>
+  </table>
+    </div>
+    <div class="col-3"></div>
+  </div>
+  <div class="row">
+    <div class="col-3"></div>
+    <div class="col-2 mt-3">
+      <%= link_to"編集する",edit_admin_customer_path(@customer), class:"btn btn-sm btn-success" %>
+    </div>
+    
+    <div class="col-2 mt-3">
+      <%= link_to"注文履歴一覧を見る",admin_path, class:"btn btn-sm btn-primary" %>  
+    </div>
+    <div class="col-5"></div>
+  </div>
+</div>
