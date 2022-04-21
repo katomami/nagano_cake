@@ -4,28 +4,82 @@
     <title>NaganoCake</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-　　<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-  <body>
-    <% if customer_signed_in? %>
-     <%= link_to "ログアウト", destroy_customer_session_path,method: :delete %>
-     
-    <% elsif admin_signed_in? %>
-     <%= link_to "ログアウト", destroy_admin_session_path,method: :delete %>
-    <% end %> 
-     
-    <% flash.each do |key, value| %>
-          <%= content_tag(:div, value, class: "#{key}") %>
-     <% end %>
-     
+  <body class="d-flex flex-column vh-100">
+    <header style="border:solid thin black;">
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+          <a class="navbar-brand p-3" href="/"><%= image_tag'logo.jpg', :size=>'200x60' %></a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav ml-auto">
+            <% if customer_signed_in? %>
+            <li class="nav-item">
+              <a href="/customers/my_page"class="btn btn-outline-secondary p-1 text-dark"style="width:6rem;height:2rem;"role="button">マイページ</a>
+            </li>
+            <li class="nav-item">
+              <span style="margin-right: 20px;"></span><a href="/items"class="btn btn-outline-secondary p-1 text-dark"style="width:5rem;height:2rem;"role="button">商品一覧</a>
+            </li>
+            <li class="nav-item">
+              <span style="margin-right: 20px;"></span><a href="/cart_items"class="btn btn-outline-secondary p-1 text-dark"style="width:5rem;height:2rem;"role="button">カート</a>
+            </li>
+            <li class="nav-item">
+              <span style="margin-right: 20px;"></span><%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class:"btn btn-outline-secondary p-1 text-dark" %>
+
+            </li>
+            <% elsif admin_signed_in? %>
+            <li class="nav-item">
+              <a href="/admin/items"class="btn btn-outline-secondary p-1 text-dark"style="width:5rem;height:2rem;"role="button">商品一覧</a>
+            </li>
+            <li class="nav-item">
+              <span style="margin-right: 20px;"></span><a href="/admin/customers"class="btn btn-outline-secondary p-1 text-dark"style="width:5rem;height:2rem;"role="button">会員一覧</a>
+            </li>
+            <li class="nav-item">
+              <span style="margin-right: 20px;"></span><a href="/admin"class="btn btn-outline-secondary p-1 text-dark"style="width:7rem;height:2rem;"role="button">注文履歴一覧</a>
+            </li>
+            <li class="nav-item">
+              <span style="margin-right: 20px;"></span><a href="/admin/genres"class="btn btn-outline-secondary p-1 text-dark"style="width:7rem;height:2rem;"role="button">ジャンル一覧</a>
+            </li>
+            <li class="nav-item">
+              <span style="margin-right: 20px;"></span><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class:"btn btn-outline-secondary p-1 text-dark" %>
+            </li>
+            <% else %>
+            <li class="nav-item">
+              <a href="/about"class="btn btn-outline-secondary p-1 text-dark"style="width:5rem;height:2rem;"role="button">About</a>
+            </li>
+            <li class="nav-item">
+             <span style="margin-right: 20px;"></span><a href="/items"class="btn btn-outline-secondary p-1 text-dark"style="width:5rem;height:2rem;"role="button">商品一覧</a>
+            </li>
+            <li class="nav-item">
+              <span style="margin-right: 20px;"></span><a href="/customers/sign_up"class="btn btn-outline-secondary p-1 text-dark"style="width:5rem;height:2rem;"role="button">新規登録</a>
+            </li>
+            <li class="nav-item">
+              <span style="margin-right: 20px;"></span><a href="/customers/sign_in"class="btn btn-outline-secondary p-1 text-dark"style="width:5rem;height:2rem;"role="button">ログイン</a>
+            </li>
+            <% end %>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main class="mb-auto">
+
+
     <%= yield %>
 
-
-
-
-
+    </main>
+    <footer style="border:solid thin black;">
+      <div class="container">
+        <div class="col-12">
+          <div class="test5"></div>
+        </div>
+      </div>
+    </footer>    
   </body>
 </html>
