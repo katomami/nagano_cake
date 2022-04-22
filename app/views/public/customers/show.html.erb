@@ -1,13 +1,14 @@
 <div class="container">
   <div class="row">
     <div class="col-2"></div>
-    <div class="col-10 mt-4">
-    <font size="4">マイページ</font>
+    <div class="col-2 mt-4">
+      <div class="test">マイページ</div>
     </div>
+    <div class="col-8"></div>
   </div>
   <div class="row">
     <div class="col-1"></div>
-    <div class="col-11 mt-4">
+    <div class="col-11 mt-3">
 
       <p class="customer_box1">登録情報<span style="margin-right: 10px;"></span><%= link_to "編集する", customers_edit_mypage_path, class:'btn btn-success' %></p>
       <table border="1" width="50%" cellpadding="10">
@@ -30,7 +31,6 @@
           <td>メールアドレス</td><td><%= @customer.email %></td>
         </tr>
       </table>
-
     </div>
   </div>
   <div class="row">

@@ -1,28 +1,18 @@
 <div class="container">
   <div class="row">
     <div class="col-1"></div>
-    <div class="col-11">
-      <h4>商品詳細</h4>
-      <br>
+    <div class="col-2 mt-2">
+      <div class="test">商品詳細</div>
     </div>
+    <div class="col-9"></div>
   </div>
-
-
-
-
   <div class="row">
-      <div class="col-4">
-
-
-
-        <%= attachment_image_tag @item, :image, format: 'jpeg', size:"250x150" %>
-
-      </div>
-      <div class="col-1"></div>
-
-
-      <div class="col-7">
-        <table>
+    <div class="col-4 mt-4">
+      <%= attachment_image_tag @item, :image, format: 'jpeg', size:"250x150" %>
+    </div>
+    <div class="col-1"></div>
+    <div class="col-7 mt-4">
+      <table>
         <tr>
           <td>商品名</td><td><%=@item.name %></td>
         </tr>
@@ -39,18 +29,17 @@
           <td>販売ステータス</td>
           <td><% if @item.is_active %><font size="4" color="green">販売中</font><% else %><font size="4" color="green">販売停止中</font><% end %></td>
         </tr>
-
-        </table>
-      <div class="row">
-        <div class="col-2"></div>
-        <div class="col-10">
-          <%= link_to"編集する",edit_admin_item_path(@item.id), class:"btn btn-sm btn-success" %>
-        </div>
-      </div>
-
-
-      </div>
+      </table>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-6"></div>
+    <div class="col-6">
+      <%= link_to"編集する",edit_admin_item_path(@item.id), class:"btn btn-sm btn-success" %>
+    </div>
   </div>
 </div>
+
+      
 
 

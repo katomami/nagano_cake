@@ -6,7 +6,7 @@
     </div>
     <div class="col-9"></div>
   </div>
-  
+
   <div class="row">
     <div class="col-1"></div>
     <div class="col-8 mt-1">
@@ -19,10 +19,10 @@
 
       </thead>
       <tbody>
-        
+
         <% @orders.each do |order| %>
         <tr>
-          <td><%= link_to order.created_at.strftime('%Y/%m/%d %H:%M:%S'), admin_order_path(order) %></td>
+          <td><%= link_to order.created_at.strftime('%Y/%m/%d %H:%M:%S'), admin_order_path(order),class:"test4" %></td>
           <td><%= order.customer.last_name %><%= order.customer.first_name %></td>
           <td>
           <% array=[] %>
@@ -31,13 +31,13 @@
           <% end %>
           <%= array.sum %>
           </td>
-        
+
           <td><%= order.status_i18n %></td>
           <% end %>
         </tr>
       </tbody>
     </table>
-    
+
     </div>
     <div class="col-3"></div>
   </div>
