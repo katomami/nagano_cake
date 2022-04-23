@@ -13,7 +13,7 @@
 <font size="4">支払方法</font>
 <br>
 <span style="margin-right: 20px;"></span><%= f.radio_button :payment_method, :credit_card, checked: "checked" %>
-<%= f.label :payment_method, Order.payment_methods_i18n[:credit_card] %>
+<%= f.label :payment_method, "クレジットカード" %>
 <br>
 <span style="margin-right: 20px;"></span><%= f.radio_button :payment_method, :transfer %>
 <%= f.label :payment_method, "銀行振込" %>
@@ -45,8 +45,8 @@
 <br>
 <p class="content1"><%= f.submit"確認画面へ進む",class:'btn btn-primary' %></p>
 <% end %>
-    
+
   </div>
-  
+
   </div>
 </div>

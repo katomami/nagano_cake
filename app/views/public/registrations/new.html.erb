@@ -9,10 +9,11 @@
   <div class="row">
     <div class="col-1"></div>
     <div class="col-11">
-    <table>
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
     <%= render "public/shared/error_messages", resource: resource %>
 
+    <table>
+    
       <tr>
         <div class="field">
         <td><%= f.label :名前 %></td>
@@ -69,8 +70,9 @@
         <td></td><td></td><td><%= f.submit "新規登録",class:"btn btn-sm btn-success" %></td>
       </div>
       </tr>
-        <% end %>
+        
     </table>
+    <% end %>
     </div>
   </div>
   <div class="row">

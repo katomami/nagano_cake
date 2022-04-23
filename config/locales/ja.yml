@@ -21,8 +21,10 @@ ja:
       not_saved: '保存できませんでした'
   activerecord:
     errors:
+
       models:
         customer:
           attributes:
             email:
               taken: 'このアドレスは使用できません'
+

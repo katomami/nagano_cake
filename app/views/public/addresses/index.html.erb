@@ -5,7 +5,7 @@
       <h4>配送先登録/一覧</h4>
     </div>
   </div>
-  <%= form_with model:@address,url:addresses_path, local:true do |f| %>
+  <%= form_with model:@address,url:addresses_path,method: :post, local:true do |f| %>
   <div class="row">
     <div class="col-1 mt-3"></div>
     <div class="col-3 mt-3">
@@ -34,38 +34,34 @@
     </div>
     <div class-"col-4 mt-1">
       <%= f.submit"新規登録",class:'btn btn-success' %>
-    <% end %>
+
     </div>
   </div>
+  <% end %>
   <div class="row">
     <div class="col-1"></div>
     <div class="col-11 mt-5">
-    
-  
-  <table border="1" width="70%" cellpadding="10">
+      
+    <table border="1" width="70%" cellpadding="10">
     <thead>
       <th>郵便番号</th>
       <th>住所</th>
       <th>宛名</th>
       <th></th>
     </thead>
+    <% @addresses.each do |address| %> 
     <tbody>
-      <% @addresses.each do |address| %>
-
-    
-      
-      
-    <tr>
-      <td><%=address.postal_code %></td>
-      <td><%=address.address %></td>
-      <td><%=address.name %></td>
-      <td><%= link_to"編集する",edit_addresses_path(address),class:"btn btn-sm btn-success" %>
+      <tr>
+        <td><%=address.postal_code %></td>
+        <td><%=address.address %></td>
+        <td><%=address.name %></td>
+        <td><%= link_to"編集する",edit_addresses_path(address),class:"btn btn-sm btn-success" %>
           <%= link_to"削除する",destroy_addresses_path(address), method: :delete,class:"btn btn-sm btn-danger" %></td>
-    </tr>
-      <% end %>
-    </tbody> 
-  </table>
-    
-    </div>  
+      </tr>
+    </tbody>
+    <% end %>
+    </table>
+     
+    </div>
   </div>
 </div>
