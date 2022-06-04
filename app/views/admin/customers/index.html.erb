@@ -1,46 +1,36 @@
-<div class="container">
-  <div class="row">
-    <div class="col-1"></div>
-    <div class="col-2 mt-1">
-      <div class="test">会員一覧</div>
-    </div>
-    <div class="col-9"></div>
-  </div>
-  <div class="row">
-    <div class="col-2"></div>
-    <div class="col-8 mt-3">
-  <table class="table">
+<div class="box2">
+  <div class="box3">
+    <div class="test">会員一覧</div>
+    <table class="table">
       <thead class="table-light">
-
-          <tr>
-            <th scope="col">会員ID</th>
-            <th scope="col">氏名</th>
-            <th scope="col">メールアドレス</th>
-            <th scope="col">ステータス</th>
-          </tr>
-        </thead>
-        <% @customers.each do |customer| %>
-        <tbody>
-          <tr>
-            <td scope="row"><%= customer.id %></td>
-            <td><%= link_to customer.last_name+customer.first_name, admin_customer_path(customer),class:"test4" %></td>
-            <td><%= customer.email %></td>
-            <% if customer.is_active == true %>
-            <td><font color=silver><b>退会</b></font></td>
-            <% else %>
-            <td><font color=green><b>有効</b></font></td>
-            <% end %>
-          </tr>
-        </tbody>
-        <% end %>
-  </table>
-    </div>
-    <div class="col-2"></div>
-  </div>
-  <div class="row">
-    <div class-"col-5"></div>
-    <div class="col-7">
+        <tr>
+          <th scope="col">会員ID</th>
+          <th scope="col">氏名</th>
+          <th scope="col">メールアドレス</th>
+          <th scope="col">ステータス</th>
+        </tr>
+      </thead>
+      <% @customers.each do |customer| %>
+      <tbody>
+        <tr>
+          <td scope="row"><%= customer.id %></td>
+          <td>
+            <%= link_to customer.last_name+customer.first_name, admin_customer_path(customer),class:"test4" %>
+          </td>
+          <td><%= customer.email %></td>
+          <% if customer.is_active == true %>
+          <td>
+            <font color=silver><b>退会</b></font>
+          </td>
+          <% else %>
+          <td>
+            <font color=green><b>有効</b></font>
+          </td>
+          <% end %>
+        </tr>
+      </tbody>
+      <% end %>
+    </table>
     <%= paginate @customers %>
-    </div>
   </div>
 </div>

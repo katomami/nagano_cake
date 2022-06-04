@@ -9,7 +9,6 @@ class CreateItems < ActiveRecord::Migration[5.2]
       t.boolean :is_active, default: true, null: false
       t.datetime :created_at
       t.datetime :updated_at
-
       t.timestamps
     end
   end

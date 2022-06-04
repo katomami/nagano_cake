@@ -9,7 +9,9 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-  <body class="d-flex flex-column vh-100">
+  <!--<body class="d-flex flex-column vh-100">-->
+  <body>
+    <div class="container-fluid">
     <header style="border:solid thin black;">
       <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container">
@@ -68,20 +70,12 @@
         </div>
       </nav>
     </header>
-    <main class="mb-auto">
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-
-
-    <%= yield %>
-
-    </main>
-    <footer style="border:solid thin black;">
-      <div class="container">
-        <div class="col-12">
-          <div class="test5"></div>
-        </div>
-      </div>
-    </footer>
+    <div class="main">
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+      <%= yield %>
+    </div>
+    <footer></footer>
+    </div>
   </body>
 </html>

@@ -1,8 +1,7 @@
 class Admin::OrderDetailsController < ApplicationController
   def update
     order_detail=OrderDetail.find(params[:id])
-
-order_detail.update(making_status: order_detail_params[:making_status])
+    order_detail.update(making_status: order_detail_params[:making_status])
     order=order_detail.order
     cake=0
     cookie=0
@@ -24,10 +23,11 @@ order_detail.update(making_status: order_detail_params[:making_status])
         order.update(status:3)
         cookie=0
       end
-
     redirect_to admin_order_path(order.id)
   end
-   private
+
+  private
+
   def order_detail_params
     params.require(:order_detail).permit(:item_id, :order_id, :making_status)
   end

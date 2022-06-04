@@ -1,23 +1,14 @@
-<div class="container">
-  <p>商品一覧(全<%= Item.count %>件)</p>
-  <div class="row">
-
-
-
-
-
-    <% @items.each do |item| %>
-  <div class="col-lg-3 col-md-3 mb-1">
-    <%= link_to item_path(item.id) do %>
-      <%= attachment_image_tag item, :image, format: 'jpeg', size:"170x120" %><br>
-    <% end %>
+<div class="box2">
+  <div class="box3">
+    <p>商品一覧(全<%= Item.count %>件)</p>
+　　<% @items.each do |item| %>
+　　  <%= link_to item_path(item.id) do %>
+        <%= attachment_image_tag item, :image, format: 'jpeg', size:"170x120" %><br>
+      <% end %>
       <font size="2"><%=item.name %></font><br>
       <font size="2">¥<%=item.price %></font><br>
-  </div>
     <% end %>
     <%= paginate @items %>
-
-
   </div>
 </div>
 

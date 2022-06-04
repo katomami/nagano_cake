@@ -41,7 +41,7 @@ Rails.application.routes.draw do
   patch 'customers/update_mypage', to:'public/customers#update', as: 'customers_update_mypage'
   get '/admin',to:'admin/homes#top'
   patch 'admin/order_details/:id', to:'admin/order_details#update', as: 'order_details_update'
-  
+
   namespace :admin do
     resources :items
     resources :genres

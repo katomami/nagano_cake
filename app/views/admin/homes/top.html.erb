@@ -1,50 +1,36 @@
-<div class="container">
-  <div class="row">
-    <div class="col-1"></div>
-    <div class="col-2 mt-1">
-      <div class="test">注文履歴一覧</div>
-    </div>
-    <div class="col-9"></div>
-  </div>
-
-  <div class="row">
-    <div class="col-1"></div>
-    <div class="col-8 mt-1">
+<div class="box2">
+  <div class="box3">
+    <div class="test">注文履歴一覧</div>
     <table class="table">
       <thead class="table-light">
         <th>購入日時</th>
         <th>購入者</th>
         <th>注文個数</th>
         <th>注文ステータス</th>
-
       </thead>
       <tbody>
-
         <% @orders.each do |order| %>
         <tr>
-          <td><%= link_to order.created_at.strftime('%Y/%m/%d %H:%M:%S'), admin_order_path(order),class:"test4" %></td>
-          <td><%= order.customer.last_name %><%= order.customer.first_name %></td>
           <td>
-          <% array=[] %>
-          <% order.order_details.each do |good| %>
-          <% array<<good.amount %>
-          <% end %>
-          <%= array.sum %>
+            <%= link_to order.created_at.strftime('%Y/%m/%d %H:%M:%S'), admin_order_path(order),class:"test4" %>
           </td>
-
-          <td><%= order.status_i18n %></td>
-          <% end %>
+          <td>
+            <%= order.customer.last_name %><%= order.customer.first_name %>
+          </td>
+          <td>
+            <% array=[] %>
+            <% order.order_details.each do |good| %>
+              <% array<<good.amount %>
+            <% end %>
+            <%= array.sum %>
+          </td>
+          <td>
+            <%= order.status_i18n %>
+          </td>
+        <% end %>
         </tr>
       </tbody>
     </table>
-
-    </div>
-    <div class="col-3"></div>
-  </div>
-  <div class="row">
-    <div class="col-6"></div>
-    <div class="col-6">
-      <%= paginate @orders %>
-    </div>
+    <%= paginate @orders %>
   </div>
 </div>

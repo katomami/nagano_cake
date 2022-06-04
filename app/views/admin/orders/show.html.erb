@@ -1,59 +1,42 @@
-<div class="container">
-  <div class="row">
-    <div class="col-1"></div>
-    <div class="col-2 mt-1">
-      <div class="test1">注文履歴詳細</div>
-    </div>
-    <div class="col-9"></div>
-  </div>
-
-  <div class="row">
-    <div class="col-1"></div>
-    <div class="col-10">
-      <%= form_with model:@order,url:admin_order_path, method: :patch, local:true do |f| %>
-      <table>
-        <tr>
-          <td><b>購入者</b></td><td><span style="margin-right: 10px;"></span><%= link_to @order.customer.last_name+' '+@order.customer.first_name,admin_customer_path(@order.customer_id),class:"test4" %></td>
-        </tr>
-        <tr>
-          <td><b>注文日</b></td><td><span style="margin-right: 10px;"></span><%= @order.created_at.strftime('%Y/%m/%d') %></td>
-        </tr>
-        <tr>
-          <td><b>配送先</b></td><td><span style="margin-right: 10px;"></span>〒<%= @order.postal_code %><span style="margin-right: 10px;"></span><%= @order.address %><br><span style="margin-right: 10px;"></span><%= @order.name %></td>
-        </tr>
-        <tr>
-          <td><b>支払方法</b></td><td><span style="margin-right: 10px;"></span><%= @order.payment_method_i18n %></td>
-        </tr>
-        <tr>
-          <td><b>注文ステータス</b></td>
-
-          <td><span style="margin-right: 10px;"></span><%= f.select :status, Order.statuses_i18n.invert %>
-          <span style="margin-right: 10px;"></span><%= f.submit"更新", class:"btn btn-sm btn-success" %></td>
-
-        </tr>
-      </table>
-      <% end %>
-    </div>
-    <div class="col-1"></div>
-  </div>
-  <div class="row">
-    <div class="col-1"></div>
-    <div class="col-7 mt-1">
-
-      <table class="table">
+<div class="box2">
+  <div class="box3">
+    <div class="test1">注文履歴詳細</div>
+    <%= form_with model:@order,url:admin_order_path, method: :patch, local:true do |f| %>
+    <table>
+      <tr>
+        <td><b>購入者</b></td>
+        <td><span style="margin-right: 10px;"></span><%= link_to @order.customer.last_name+' '+@order.customer.first_name,admin_customer_path(@order.customer_id),class:"test4" %></td>
+      </tr>
+      <tr>
+        <td><b>注文日</b></td>
+        <td><span style="margin-right: 10px;"></span><%= @order.created_at.strftime('%Y/%m/%d') %></td>
+      </tr>
+      <tr>
+        <td><b>配送先</b></td>
+        <td><span style="margin-right: 10px;"></span>〒<%= @order.postal_code %><span style="margin-right: 10px;"></span><%= @order.address %><br><span style="margin-right: 10px;"></span><%= @order.name %></td>
+      </tr>
+      <tr>
+        <td><b>支払方法</b></td>
+        <td><span style="margin-right: 10px;"></span><%= @order.payment_method_i18n %></td>
+      </tr>
+      <tr>
+        <td><b>注文ステータス</b></td>
+        <td>
+          <span style="margin-right: 10px;"></span><%= f.select :status, Order.statuses_i18n.invert %>
+          <span style="margin-right: 10px;"></span><%= f.submit"更新", class:"btn btn-sm btn-success" %>
+        </td>
+      </tr>
+    </table>
+    <% end %>
+    <table class="table">
       <thead class="table-light">
         <th>商品名</th>
         <th>単価(税込)</th>
         <th>数量</th>
         <th>小計</th>
         <th>製作ステータス</th>
-
       </thead>
-
-
-
       <tbody>
-
       <% @order_details.each do |good| %>
         <tr>
           <td><%= good.item.name %></td>
@@ -66,28 +49,20 @@
           <% end %>
       <% end %>
         </tr>
-
       </tbody>
-
-
-      </table>
-
-    </div>
-    <div class="col-1"></div>
-    <div class="col-3 mt-auto">
-
-      <table>
-        <tr>
-          <td><b>商品合計</b></td><td><span style="margin-right: 10px;"></span><%= (@order.total_payment-800) %>円</td>
-        </tr>
-        <tr>
-          <td><b>送料</b></td><td><span style="margin-right: 10px;"></span><%= @order.shipping_cost %>円</td>
-        </tr>
-        <tr>
-          <td><b>請求金額合計</b></td><td><span style="margin-right: 10px;"></span><b><%= @order.total_payment %>円</b></td>
-        </tr>
-      </table>
-
-    </div>
+    </table>
+    <table>
+      <tr>
+        <td><b>商品合計</b></td>
+        <td><span style="margin-right: 10px;"></span><%= (@order.total_payment-800) %>円</td>
+      </tr>
+      <tr>
+        <td><b>送料</b></td>
+        <td><span style="margin-right: 10px;"></span><%= @order.shipping_cost %>円</td>
+      </tr>
+      <tr>
+        <td><b>請求金額合計</b></td><td><span style="margin-right: 10px;"></span><b><%= @order.total_payment %>円</b></td>
+      </tr>
+    </table>
   </div>
 </div>
