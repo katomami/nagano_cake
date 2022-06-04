@@ -1,24 +1,16 @@
-# README
+# nagano_cake
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## サイト概要
+このサイトはDMM WEBCAMPのカリキュラムの中の応用学習課題です。長野県にある小さな洋菓子店「ながのCAKE」の商品を通販するためのECサイトの制作を行いました。
 
-Things you may want to cover:
+## 使用しているフレームワーク
+*Ruby on Rails  
+*Bootstrap  
 
-* Ruby version
+## 使用している言語
+*HTML  
+*CSS  
+*Ruby  
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## OS
+*Amazon Linux2
