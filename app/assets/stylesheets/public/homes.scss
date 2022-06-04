@@ -1,20 +1,21 @@
 // Place all the styles related to the public/homes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-p{
-  color: black;
-}
+
 .box{
   width: 400px;
-  margin: 5em;
+  margin: 10px;
   border: solid 3px #000000;
   background-color: #ffffff;
 }
-.background-image{
+.box11{
   background-image: image-url("top.jpg");
   background-size: cover;
-  height: 300px;
-  width: 80%;
-  margin: 40px;
-
+  height: 200px;
+  width: 500px;
+  margin: 0;
+}
+.container{
+  display: flex;
+  justify-content: space-around;
 }
